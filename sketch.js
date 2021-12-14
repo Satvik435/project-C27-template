@@ -10,6 +10,7 @@ var playerArrows = [];
 var board1, board2;
  var board1Collision
  var board2Collision
+ var numberOfArrows=10
 function preload() {
   backgroundImg = loadImage("./assets/background.png");
   baseimage = loadImage("./assets/base.png");
@@ -65,16 +66,16 @@ function draw() {
  }
       //[optional code to add trajectory of arrow]
       
-      // var posX = playerArrows[i].body.position.x;
-      // var posY = playerArrows[i].body.position.y;
+         var posX = playerArrows[i].body.position.x;
+       var posY = playerArrows[i].body.position.y;
 
-      // if (posX > width || posY > height) {
-      //   if (!playerArrows[i].isRemoved) {
-      //     playerArrows[i].remove(i);
-      //   } else {
-      //     playerArrows[i].trajectory = [];
-      //   }
-      // }
+        if (posX > width || posY > height) {
+           if (!playerArrows[i].isRemoved) {
+           playerArrows[i].remove(i);
+           } else {
+           playerArrows[i].trajectory = [];
+         }
+        }
     }
   }
 
@@ -88,6 +89,8 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === 32) {
+   if(numberOfArrows>0){
+   
    
       var posX = playerArcher.body.position.x;
       var posY = playerArcher.body.position.y;
@@ -98,6 +101,8 @@ function keyPressed() {
       arrow.trajectory = [];
       Matter.Body.setAngle(arrow.body, angle);
       playerArrows.push(arrow);
+    numberOfArrows-=1
+   }
     }
   }
 
