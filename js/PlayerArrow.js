@@ -17,11 +17,11 @@ class PlayerArrow {
 
 
   //required for trajectory
-  // remove(index) {
-  //   this.isRemoved = true;
-  //   Matter.World.remove(world, this.body);
-  //   delete playerArrows[index];
-  // }
+   remove(index) {
+  this.isRemoved = true;
+   Matter.World.remove(world, this.body);
+    delete playerArrows[index];
+  }
 
   shoot(archerAngle) {
     archerAngle += 90;
