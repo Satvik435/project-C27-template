@@ -8,7 +8,8 @@ var canvas,baseimage,playerimage;
 var palyer, playerBase, playerArcher;
 var playerArrows = [];
 var board1, board2;
-
+ var board1Collision
+ var board2Collision
 function preload() {
   backgroundImg = loadImage("./assets/background.png");
   baseimage = loadImage("./assets/base.png");
@@ -57,7 +58,11 @@ function draw() {
   for (var i = 0; i < playerArrows.length; i++) {
     if (playerArrows[i] !== undefined) {
       playerArrows[i].display();
-
+ var board1Collision=Matter.Sat.collides(board1.body,playerArrows[i].body)
+ var board2Collision=Matter.Sat.collides(board2.body,playerArrows[i].body)
+ if (board1Collision.collided||board2.Collision.collided){
+   console.log('collided')
+ }
       //[optional code to add trajectory of arrow]
       
       // var posX = playerArrows[i].body.position.x;
